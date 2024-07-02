@@ -1,15 +1,7 @@
-var lightbox = new SimpleLightbox('.gallery a', {
-  /* options */
-});
-var lightbox = $('.gallery a').simpleLightbox({
-  /* options */
-});
-// необхідно додати ще один імпорт, крім того, що описаний у документації.
 // Описаний в документації
 import SimpleLightbox from 'simplelightbox';
 // Додатковий імпорт стилів
 import 'simplelightbox/dist/simple-lightbox.min.css';
-import SimpleLightbox from 'simplelightbox/dist/simple-lightbox.esm';
 
 const images = [
   {
@@ -98,16 +90,22 @@ const galleryItemsMarkup = images
 
 galleryContainer.innerHTML = galleryItemsMarkup;
 
-// galleryContainer.addEventListener('click', event => {
-//   event.preventDefault();
+galleryContainer.addEventListener('click', event => {
+  event.preventDefault();
 
-//   if (event.target.nodeName !== 'IMG') return;
+  if (event.target.nodeName !== 'IMG') return;
 
-//   const source = event.target.dataset.source;
+  const source = event.target.dataset.source;
 
-//   const instance = basicLightbox.create(`
-//         <img src="${source}" width="800" height="600">
-//       `);
+  const instance = basicLightbox.create(`
+        <img src="${source}" width="800" height="600">
+      `);
 
-//   instance.show();
-// });
+  instance.show();
+});
+
+const lightbox = new SimpleLightbox('.gallery a', {
+  captionsData: 'alt',
+  captionDelay: 250,
+  captionType: 'alt',
+});
