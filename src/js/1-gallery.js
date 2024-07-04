@@ -90,20 +90,6 @@ const galleryItemsMarkup = images
 
 galleryContainer.innerHTML = galleryItemsMarkup;
 
-galleryContainer.addEventListener('click', event => {
-  event.preventDefault();
-
-  if (event.target.nodeName !== 'IMG') return;
-
-  const source = event.target.dataset.source;
-
-  const instance = basicLightbox.create(`
-        <img src="${source}" width="800" height="600">
-      `);
-
-  instance.show();
-});
-
 const lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
   captionDelay: 250,
